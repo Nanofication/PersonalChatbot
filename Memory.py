@@ -13,7 +13,7 @@ Intent: What is the input's intent. What is the user's purpose with this respons
 """
 
 class Memory:
-    def __init__(self, user_input= "", output= "", functions= "", intent= ""):
+    def __init__(self, user_input= "", output= "", functions= [], intent= ""):
         self.user_input = user_input
         self.output = output
         self.functions = functions
