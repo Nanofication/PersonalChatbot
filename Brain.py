@@ -83,7 +83,7 @@ def processMemory(memory):
     :param memory: Memory object
     :return: The memory's output
     """
-    if not memory.functions:
+    if memory.functions:
         try:
             print "This worked"
             memory = BotFunctions.FUNCTIONS[memory.functions](memory)
