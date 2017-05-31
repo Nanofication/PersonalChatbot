@@ -1,0 +1,11 @@
+{
+  "memories":[
+      {
+        "input": "Hello how are you?",
+        "intent": "Greeting",
+        "functions": "",
+        "output": "I'm fine, thank you."
+      }
+  ]
+
+}
