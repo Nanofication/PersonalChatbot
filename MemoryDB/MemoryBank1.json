@@ -5,6 +5,12 @@
         "intent": "Greeting",
         "functions": "",
         "output": "I'm fine, thank you."
+      },
+      {
+        "input": "Hi",
+        "intent": "Greeting",
+        "functions": "",
+        "output": "Hello"
       }
   ]
 

@@ -11,7 +11,6 @@ import json
 import os
 
 from Memory import Memory
-from pprint import pprint
 
 PATH_TO_JSON = 'MemoryDB/'
 FILE_DIR = os.listdir(PATH_TO_JSON)
@@ -23,7 +22,17 @@ def parseMemoryDB():
 
     :return: Dictionary of user inputs mapped to memory objects
     """
-    memory = Memory()
+    json_files = getListOfJsonFiles()
+    memories = dict()
+
+    for index, js in enumerate(json_files):
+        with open(os.path.join(PATH_TO_JSON, js)) as json_file:
+            json_text = json.load(json_file)
+
+            for data in json_text['memories']:
+                memory = Memory(data['input'], data['output'], data['functions'], data['intent'])
+                memories[memory.user_input] = memory
+    return memories
 
 def getListOfJsonFiles():
     """
@@ -33,5 +42,6 @@ def getListOfJsonFiles():
     json_files = [json_file for json_file in FILE_DIR if json_file.endswith('.json')]
     return json_files
 
-print getListOfJsonFiles()
+
+
 # def parse_memories():
