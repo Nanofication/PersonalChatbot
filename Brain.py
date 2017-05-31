@@ -10,6 +10,7 @@ questions to be parsed will be done here.
 import json
 import os
 import re
+import BotFunctions
 
 from Memory import Memory
 
@@ -82,10 +83,19 @@ def processMemory(memory):
     :param memory: Memory object
     :return: The memory's output
     """
+    if not memory.functions:
+        try:
+            print "This worked"
+            memory = BotFunctions.FUNCTIONS[memory.functions](memory)
+        except:
+            print "No valid functions found"
+            pass
 
     return memory.output
 
 if __name__ == "__main__":
     parseMemoryDB()
     memory = parseUserInput("Hi")
-    processMemory(memory)
+
+    if memory != None:
+        print processMemory(memory)

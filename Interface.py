@@ -6,12 +6,14 @@ Run this script to interact with the chatbot
 
 """
 
+import Brain
+
 
 def interactWithChatbot(user_input):
     """
     Processes the user_input and come up with the correct response
     """
-    # bot_brain.parse(user_input)
+    Brain.parseUserInput(user_input)
     return "Hello world"
 
 
