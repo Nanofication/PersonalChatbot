@@ -1,0 +1,27 @@
+Personal Chatbot: Cyndi
+
+Current Version:
+1. Extract responses from JSON files
+2. Can pattern match user inputs
+3. Can run functions if the memory contains a keyword for running a function
+
+Will Do:
+1. Running functions can allow the chatbot to edit the output
+- For example: Nannan: "How are you Cyndi?"
+        Cyndi's stored pattern: "I am fine *" where * represent's the user's name
+        Cyndi's function field contains "Recognize user" - This results Cyndi to run a extract name function
+        and return the user's name
+        Cyndi's response: "I am fine Nannan"
+
+2. Give Cyndi a set of default parameters
+    I.E:
+    - Name
+    - Purpose
+    - Default responses
+
+3. Create a list of Python functions to execute
+4. Create a easier way to add new memories
+
+Future:
+- Recognize Intents
+- ML to classify intents
