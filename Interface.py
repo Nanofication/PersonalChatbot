@@ -13,13 +13,19 @@ def interactWithChatbot(user_input):
     """
     Processes the user_input and come up with the correct response
     """
-    Brain.parseUserInput(user_input)
-    return "Hello world"
+    memory = Brain.parseUserInput(user_input)
+    if memory != None:
+        print Brain.processMemory(memory)
+    else:
+        print "I did not catch that"
 
 
 if __name__ == "__main__":
-    user_input = raw_input("What can I do for you? ")
+    Brain.parseMemoryDB()
+    print "What can I do for you?"
+    user_input = raw_input(">: ")
 
     while user_input != "FINISH":
         interactWithChatbot(user_input)
-        user_input = raw_input("What can I do for you? ")
+        print "What else can I do for you?"
+        user_input = raw_input(">: ")

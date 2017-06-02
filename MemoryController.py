@@ -58,6 +58,21 @@ def displayMemories():
             print "Output: ", m.memories[i].output
             print "\n"
 
+def displayMemoriesInGUI():
+    """
+    Display JSON files and its contents with associated fields inside the GUI
+    :return:
+    """
+    for m in MEMORY_LIST:
+        print "File Name: ", m.file_name
+        for i in range(len(m.memories)):
+            print "Memory Number: ", i
+            print "User Input: ", m.memories[i].user_input
+            print "Intent: ", m.memories[i].intent
+            print "Functions: ", m.memories[i].functions
+            print "Output: ", m.memories[i].output
+            print "\n"
+
 def createNewMemory():
     """
     Create a new memory with user input
@@ -84,6 +99,8 @@ def addToMemories(memory, memoryFile):
 
 
 if __name__ == "__main__":
+    loadMemories()
+
     # Create GUI Window
     root = Tk()
 
@@ -93,9 +110,10 @@ if __name__ == "__main__":
 
     app = Frame(root)
     app.grid()
-    label = Label(app, text = "This is a label")
 
-    label.grid()
+    for memory_file in MEMORY_LIST:
+        label = Label(app, text = memory_file.file_name)
+        label.grid()
 
     # Kick off event loop
     root.mainloop()

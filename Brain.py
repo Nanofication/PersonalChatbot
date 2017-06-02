@@ -88,7 +88,6 @@ def processMemory(memory):
     """
     if memory.functions:
         try:
-            print "This worked"
             memory = BotFunctions.FUNCTIONS[memory.functions](memory)
         except:
             print "No valid functions found"
