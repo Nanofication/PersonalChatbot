@@ -35,7 +35,7 @@ def parseMemoryDB():
     for index, js in enumerate(json_files):
         with open(os.path.join(PATH_TO_JSON, js)) as json_file:
             json_text = json.load(json_file)
-
+            # Add Parser here to check file for errors
             for data in json_text['memories']:
                 memory = Memory(removeSpecialChars(data['input']), data['output'], data['functions'], data['intent'])
                 MEMORIES[memory.user_input] = memory
@@ -43,7 +43,7 @@ def parseMemoryDB():
 
 def getListOfJsonFiles():
     """
-    Get list of json files from the director
+    Get list of json files from the directory
     :return: List of json files
     """
     json_files = [json_file for json_file in FILE_DIR if json_file.endswith('.json')]
@@ -110,7 +110,7 @@ def removeSpecialChars(content):
 
 if __name__ == "__main__":
     parseMemoryDB()
-    memory = parseUserInput("Hi")
+    memory = parseUserInput("Hi") #Test Input
 
     if memory != None:
-        print processMemory(memory)
+        print processMemory(memory) #Test Output
