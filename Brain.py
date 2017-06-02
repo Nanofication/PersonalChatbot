@@ -71,6 +71,14 @@ def parseUserInput(user_input):
 """
 Process Memories
 """
+def removeSpecialChars(content):
+    """
+    Strip the content of special characters
+    :return: The lower cased content stripped of special characters
+    """
+    pattern = re.compile("[^0-9a-zA-Z]+")
+    content = pattern.sub(' ', content.lower())
+    return content
 
 def processMemory(memory):
     """
@@ -80,6 +88,7 @@ def processMemory(memory):
     """
     if memory.functions:
         try:
+            print "This worked"
             memory = BotFunctions.FUNCTIONS[memory.functions](memory)
         except:
             print "No valid functions found"
@@ -98,7 +107,6 @@ def removeSpecialChars(content):
     pattern = re.compile("[^0-9a-zA-Z]+")
     content = pattern.sub(' ', content.lower())
     return content
-
 
 if __name__ == "__main__":
     parseMemoryDB()
