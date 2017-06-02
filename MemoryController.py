@@ -10,6 +10,8 @@ import os
 from MemoryFile import MemoryFile
 from Memory import Memory
 
+from Tkinter import *
+
 PATH_TO_JSON = 'MemoryDB/'
 FILE_DIR = os.listdir(PATH_TO_JSON)
 MEMORY_LIST = []
@@ -70,7 +72,7 @@ def createNewMemory():
     return Memory(user_input, intent, functions, output)
 
 
-def addToMemories(memory):
+def addToMemories(memory, memoryFile):
     """
     Add memory to the list of memories
     :param memory: Memory object that will be stored
@@ -78,8 +80,22 @@ def addToMemories(memory):
     global MEMORY_LIST
     new_memory = createNewMemory()
 
-    MEMORY_LIST.append(new_memory)
+    memoryFile.memories.append(new_memory)
 
 
 if __name__ == "__main__":
-    displayMemories()
+    # Create GUI Window
+    root = Tk()
+
+    # Modify Root Window
+    root.title("Memory Controller")
+    root.geometry("720x576")
+
+    app = Frame(root)
+    app.grid()
+    label = Label(app, text = "This is a label")
+
+    label.grid()
+
+    # Kick off event loop
+    root.mainloop()
