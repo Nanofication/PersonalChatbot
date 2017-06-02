@@ -39,10 +39,47 @@ def getListOfJsonFiles():
     json_files = [json_file for json_file in FILE_DIR if json_file.endswith('.json')]
     return json_files
 
-loadMemories()
+def displayMemories():
+    """
+    Display JSON files and its contents with associated fields
+    Note: This will have to be in a GUI later
+    """
+    loadMemories()
 
-for m in MEMORY_LIST:
-    print m.file_name
-    for memory in m.memories:
-        print memory.user_input
-        print memory.output
+    for m in MEMORY_LIST:
+        print "File Name: ", m.file_name
+        for i in range(len(m.memories)):
+            print "Memory Number: ", i
+            print "User Input: ", m.memories[i].user_input
+            print "Intent: ", m.memories[i].intent
+            print "Functions: ", m.memories[i].functions
+            print "Output: ", m.memories[i].output
+            print "\n"
+
+def createNewMemory():
+    """
+    Create a new memory with user input
+    :return: Memory object
+    """
+    print "Add a New Memory\n"
+    user_input = raw_input("Provide a user input: ")
+    intent = raw_input("What is the intent of the input: ")
+    functions = raw_input("What functions will the chatbot execute: ")
+    output = raw_input("What will the chatbot respond with: ")
+
+    return Memory(user_input, intent, functions, output)
+
+
+def addToMemories(memory):
+    """
+    Add memory to the list of memories
+    :param memory: Memory object that will be stored
+    """
+    global MEMORY_LIST
+    new_memory = createNewMemory()
+
+    MEMORY_LIST.append(new_memory)
+
+
+if __name__ == "__main__":
+    displayMemories()
